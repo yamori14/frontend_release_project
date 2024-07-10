@@ -15,7 +15,6 @@ function getCookieValue(cookieName) {
             return cookie.substring(cookieName.length + 1); // +1 для пропуску символу "="
         }
     }
-
     // Якщо кукі з вказаним іменем не знайдено, повертаємо порожній рядок або можна повернути null
     return '';
 }
@@ -48,7 +47,7 @@ themeBtn.addEventListener("click", () => {
 }) 
 
 // Очікуємо завантаження сторінки
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     // Отримуємо всі написи для анімації
     const textElements = document.querySelectorAll('.fade-in-text');
 
@@ -122,9 +121,9 @@ cartBtn.addEventListener("click", function () {
 class ShoppingCart {
     constructor() {
         this.items = {};
-        this.cartCounter = document.querySelector('.cart-counter');
-        this.cartElement = document.querySelector('#cart-items'); // Знаходимо елемент кошика у HTML
-        this.loadCartFromCookies();
+        this.cartCounter = document.querySelector('.cart-counter');// отримуємо лічильник кількості товарів у кошику
+        this.cartElement = document.querySelector('#cart-items'); 
+        this.loadCartFromCookies(); // завантажуємо з кукі-файлів раніше додані в кошик товари
     }
 
     // Додавання товару до кошика
@@ -139,6 +138,7 @@ class ShoppingCart {
         this.saveCartToCookies();
     }
 
+    // Зміна кількості товарів товарів
     updateQuantity(itemTitle, newQuantity) {
         if (this.items[itemTitle]) {
             this.items[itemTitle].quantity = newQuantity;
@@ -173,18 +173,17 @@ class ShoppingCart {
             this.updateCounter();
         }
     }
-
+    // Обчислення загальної вартості товарів у кошику
     calculateTotal() {
         let total = 0;
         for (let key in this.items) { // проходимося по всіх ключах об'єкта this.items
             total += this.items[key].price * this.items[key].quantity; // рахуємо вартість усіх товарів
         }
         return total;
-
     }
 }
 
-// Створення об'єкта кошика
+// Створення об'єкта кошика 
 let cart = new ShoppingCart();
 
 
@@ -231,11 +230,3 @@ function searchProducts(event) {
 // Навішуємо обробник подій на форму пошуку
 let searchForm = document.querySelector('#searchForm')
 searchForm.addEventListener('submit', searchProducts);
-
-
-
-
-
-
-
-
