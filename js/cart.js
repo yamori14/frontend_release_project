@@ -6,10 +6,13 @@ let orderSection = document.querySelector(".order")
 
 function get_item(item) {
     return `<div class = "cart-item">
-                <h4 class="cart-item-title">${item.title}</h4>
-                <div class="cart-item-quantity">Кількість: ${item.quantity}</div>
-                <div class="cart-item-price" data-price="${item.price}">${item.price * item.quantity} грн</div>
-            </div>`
+        <h4 class="cart-item-title">${item.title}</h4>
+        
+        <div class="cart-item-quantity">Кількість: 
+        <input data-item="${item.title}" class="form-control quantity-input" type="number" name="quantity" min="1" value="${item.quantity}">
+        </div>
+        <div class="cart-item-price" data-price="${item.price}">${item.price * item.quantity} грн</div>
+        </div>`
 }
 
 function showCartList() {
@@ -18,18 +21,38 @@ function showCartList() {
         cart_list.innerHTML += get_item(cart.items[key])
     }
     cart_total.innerHTML = cart.calculateTotal()
+
+
 }
 
 showCartList()
 
-orderBtn.addEventListener("click", function (event) {
-    orderBtn.style.display = "none"
-    orderSection.style.display = "block"
+cart_list.addEventListener('change', (event) => {
+        let target = event.target 
+        const itemTitle = target.getAttribute('data-item')
+        const newQuantity = +target.value
+        if (newQuantity > 0) {
+            cart.updateQuantity(itemTitle, newQuantity)
+            showCartList() // Оновити список товарів у кошику
+        }
+    });
+
+    //анімація появи кошика поступова поява кошика
     anime({
-        targets: '.order',
+        targets: '.cart',
         opacity: 1, // Кінцева прозорість (1 - повністю видимий)
-        duration: 1000, // Тривалість анімації в мілісекундах
+        duration: 500, // Тривалість анімації в мілісекундах
         easing: 'easeInOutQuad'
     })
+
+orderBtn.addEventListener("click", function (event) {
+        orderBtn.style.display = "none"
+        orderSection.style.display = "block"
+        anime({
+            targets: '.order',
+            opacity: 1, // Кінцева прозорість (1 - повністю видимий)
+            duration: 1000, // Тривалість анімації в мілісекундах
+            easing: 'easeInOutQuad'
+        })
 })
 

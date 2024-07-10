@@ -18,14 +18,12 @@ body.light-theme {
     color: rgb(24, 24, 24);
 }
 
-header {
+header{
     background: #272727;
 }
-
-.btn-search {
+.btn-search{
     border-radius: 30px;
 }
-
 .banner {
     width: 100%;
     height: 90vh;
@@ -50,7 +48,7 @@ header {
 .my-card {
     padding: 28px;
     background: transparent;
-    transition: .2s linear;
+    transition: background .2s linear;
     border-radius: 10px;
     max-width: 350px;
 }
@@ -58,7 +56,7 @@ header {
 .my-card:hover {
     background: #DCE5E2;
     cursor: pointer;
-    transition: .3s linear;
+    transition: background .2s linear;
     color: #272727;
 }
 
@@ -153,6 +151,7 @@ footer {
     transition-duration: .2s;
 }
 
+/* Проста анімація появи тексту */
 
 header.fixed {
     position: fixed;
@@ -203,6 +202,54 @@ header.fixed {
     transition-duration: .2s;
 }
 
+.cart-btn:hover .bell {
+    animation: bellRing 0.9s both;
+}
+
 .cart-btn div {
     position: relative;
+}
+
+.cart-counter {
+    background: #fff;
+    font-size: small;
+    color: rgb(135, 91, 255);
+    border-radius: 100px;
+    padding: 0 .2em;
+    position: absolute;
+    /* Змініть позицію на абсолютну */
+    top: 0;
+    /* Відступ зверху */
+    right: 0;
+    /* Відступ справа */
+}
+
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+
+    0%,
+    100% {
+        transform-origin: top;
+    }
+
+    15% {
+        transform: rotateZ(10deg);
+    }
+
+    30% {
+        transform: rotateZ(-10deg);
+    }
+
+    45% {
+        transform: rotateZ(5deg);
+    }
+
+    60% {
+        transform: rotateZ(-5deg);
+    }
+
+    75% {
+        transform: rotateZ(2deg);
+    }
 }

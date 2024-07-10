@@ -25,16 +25,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class='nav-link active' href='index.html#products'>Товари</a>
+              <a class='nav-link' href='index.html#products'>Товари</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href='#about'>Про нас</a>
+              <a class="nav-link" href='index.html#about'>Про нас</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href='#support'>Підтримка</a>
+              <a class="nav-link" href='#support' class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Підтримка</a>
             </li>
           </ul>
+          <form id="searchForm" class="d-flex mx-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Пошук" aria-label="Search">
+            <button class="btn btn-outline-secondary btn-search" type="submit">Знайти</button>
+          </form>
           <button class="cart-btn" id="cartBtn">
             Кошик
             <svg xmlns="http://www.w3.org/2000/svg" class="bell" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -46,7 +51,7 @@
               <path d="M17 17h-11v-14h-2" />
               <path d="M6 5l14 1l-1 7h-13" />
             </svg>
-
+            <span class="cart-counter">0</span>
             </li>
           </button>
         </div>
@@ -65,10 +70,23 @@
 
       </div>
     </section>
+    <section class="container about py-5" id="about">
+      <div class="row row-cols-1 row-cols-md-2 d-flex align-items-center">
+        <div class="col">
+          <h3 class="my-3">LogikaShop - ваш партнер у світі ґаджетів</h3>
+          Ласкаво просимо до LogikaShop, вашого надійного онлайн магазину для найсучасніших гаджетів та електроніки! У
+          нас ви знайдете найновіші та найпопулярніші технологічні новинки, які зроблять ваше життя зручнішим і
+          цікавішим.
+        </div>
+        <div class="col">
+          <img src="img/screen-post-LJUaTzKtFNc-unsplash.jpg" class="img-fluid">
+        </div>
 
+      </div>
+    </section>
   </main>
   <footer>
-
+    <button id="themeToggle"><i class="bi bi-brightness-high"></i></button>
     <p>Logika IT School &copy; 2024</p>
     <p>Релізний проєкт Ім'я Прізвище</p>
 
@@ -80,6 +98,30 @@
     </div>
   </footer>
 
+  <!-- Модальне вікно (з'являється при натисканні на "Підтримка") -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Виникли запитання?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Будь ласка, залиште номер телефону і ми зв'яжемося з Вами.</p>
+          <form action="" method="post">
+            <div class="mb-3">
+              <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                placeholder="Номер телефону" />
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Надіслати</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
